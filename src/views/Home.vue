@@ -15,7 +15,17 @@
       <h2>Title: {{ recipe.title }}</h2>
       <img v-bind:src="recipe.image_url" v-bind:alt="recipe.title">
       <p>Chef: {{ recipe.chef }}</p>
+      <button v-on:click="showRecipe(recipe)">More info</button>
     </div>
+
+    <dialog id="recipe-details">
+      <form method="dialog">
+        <h1>Recipe info</h1>
+        <p>Title: ...</p>
+        <button>Close</button>
+      </form>
+    </dialog>
+
   </div>
 </template>
 
@@ -68,6 +78,10 @@ export default {
           this.recipes.push(response.data);
         })
         .catch((error) => console.log(error.response));
+    },
+    showRecipe: function (recipe) {
+      console.log("Gonna show more info...", recipe);
+      document.querySelector("#recipe-details").showModal();
     },
   },
 };
