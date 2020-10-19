@@ -3,6 +3,7 @@
     <h1>All recipes</h1>
     <div v-for="recipe in recipes">
       <h2>Title: {{ recipe.title }}</h2>
+      <a v-bind:href="`/recipes/${recipe.id}`">more info</a>
     </div>
   </div>
 </template>
