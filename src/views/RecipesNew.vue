@@ -1,5 +1,6 @@
 <template>
   <div class="signup">
+    <img v-if="status" v-bind:src="`https://http.cat/${status}`" alt="">
     <form v-on:submit.prevent="createRecipe()">
       <h1>Recipes new</h1>
       <ul>
@@ -47,6 +48,7 @@ export default {
       directions: "",
       imageUrl: "",
       errors: [],
+      status: "",
     };
   },
   methods: {
@@ -66,6 +68,7 @@ export default {
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
+          this.status = error.response.status;
         });
     },
   },
