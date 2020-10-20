@@ -1,6 +1,7 @@
 <template>
   <div class="recipes-show">
     <h1>Recipe info</h1>
+    <a v-bind:href="`/recipes/${recipe.id}/edit`">Edit recipe</a>
     <h2>{{ recipe.title }}</h2>
     <img v-bind:src="recipe.image_url" alt="">
     <p>Ingredients: {{ recipe.ingredients}}</p>
