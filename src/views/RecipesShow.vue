@@ -2,6 +2,7 @@
   <div class="recipes-show">
     <h1>Recipe info</h1>
     <a v-bind:href="`/recipes/${recipe.id}/edit`">Edit recipe</a>
+    <button v-on:click="destroyRecipe(recipe)">Destroy recipe</button>
     <h2>{{ recipe.title }}</h2>
     <img v-bind:src="recipe.image_url" alt="">
     <p>Ingredients: {{ recipe.ingredients}}</p>
@@ -28,6 +29,12 @@ export default {
       axios.get("/api/recipes/" + this.$route.params.id).then((response) => {
         console.log("One recipe:", response.data);
         this.recipe = response.data;
+      });
+    },
+    destroyRecipe: function (recipe) {
+      axios.delete("/api/recipes/" + recipe.id).then((response) => {
+        console.log("Success", response.data);
+        this.$router.push("/recipes");
       });
     },
   },
