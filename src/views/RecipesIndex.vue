@@ -1,9 +1,21 @@
 <template>
   <div class="recipes-index">
     <h1>All recipes</h1>
-    <div v-for="recipe in recipes">
-      <h2>Title: {{ recipe.title }}</h2>
-      <a v-bind:href="`/recipes/${recipe.id}`">more info</a>
+    <div class="row row-cols-1 row-cols-md-4">
+      <div v-for="recipe in recipes" class="col mb-4">
+        <div class="card">
+          <img v-bind:src="recipe.image_url" class="card-img-top" alt="">
+          <div class="card-body">
+            <h5 class="card-title">{{ recipe.title }}</h5>
+            <p class="card-text">
+              {{ recipe.ingredients }}
+            </p>
+            <p>
+              <a v-bind:href="`/recipes/${recipe.id}`">more info</a>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
