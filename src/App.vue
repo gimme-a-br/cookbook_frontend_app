@@ -14,13 +14,13 @@
           <li class="nav-item">
             <a class="nav-link" href="/recipes/new">New recipe</a>
           </li>
-          <li class="nav-item">
+          <li v-if="!isLoggedIn()" class="nav-item">
             <a class="nav-link" href="/signup">Signup</a>
           </li>
-          <li class="nav-item">
+          <li v-if="!isLoggedIn()" class="nav-item">
             <a class="nav-link" href="/login">Login</a>
           </li>
-          <li class="nav-item">
+          <li v-if="isLoggedIn()" class="nav-item">
             <a class="nav-link" href="/logout">Logout</a>
           </li>
         </ul>
@@ -42,3 +42,13 @@ body {
   background-image: url("./assets/retina_wood.png");
 }
 </style>
+
+<script>
+export default {
+  methods: {
+    isLoggedIn: function () {
+      return localStorage.getItem("jwt");
+    },
+  },
+};
+</script>
