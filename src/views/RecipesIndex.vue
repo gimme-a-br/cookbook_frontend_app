@@ -7,8 +7,8 @@
         <option v-for="recipe in recipes">{{ recipe.title }}</option>
       </datalist>
     </div>
-    <div class="row row-cols-1 row-cols-md-4">
-      <div v-for="recipe in filterBy(recipes, searchFilter, 'title', 'ingredients')" class="col mb-4">
+    <transition-group appear enter-active-class="animated flip" leave-active-class="animated fadeOutDownBig" class="row row-cols-1 row-cols-md-4">
+      <div v-for="recipe in filterBy(recipes, searchFilter, 'title', 'ingredients')" v-bind:key="recipe.id" class="col mb-4">
         <div class="card">
           <img v-bind:src="recipe.image_url" class="card-img-top" alt="">
           <div class="card-body">
@@ -22,7 +22,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </transition-group>
   </div>
 </template>
 
