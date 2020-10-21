@@ -26,8 +26,8 @@
         <p>Ingredients: <input type="text" v-model="currentRecipe.ingredients"></p>
         <p>Directions: <input type="text" v-model="currentRecipe.directions"></p>
         <p>Prep time: <input type="text" v-model="currentRecipe.prep_time"></p>
-        <button v-on:click="updateRecipe(currentRecipe)">Update</button>
-        <button v-on:click="destroyRecipe(currentRecipe)">Destroy</button>
+        <button v-if="currentRecipe.is_owner" v-on:click="updateRecipe(currentRecipe)">Update</button>
+        <button v-if="currentRecipe.is_owner" v-on:click="destroyRecipe(currentRecipe)">Destroy</button>
         <button>Close</button>
       </form>
     </dialog>
