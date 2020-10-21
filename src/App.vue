@@ -31,7 +31,7 @@
       </div>
     </nav>
     <div class="container">
-      <div class="alert alert-success" v-if="flashMessage">{{ flashMessage }}</div>
+      <div class="alert alert-success" v-if="flashMessage" v-on:click="flashMessage = ''">{{ flashMessage }}</div>
       <router-view/>
     </div>
   </div>
