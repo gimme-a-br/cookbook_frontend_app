@@ -2,7 +2,10 @@
   <div class="recipes-index">
     <h1>All recipes</h1>
     <div>
-      Search recipes: <input type="text" v-model="searchFilter">
+      Search recipes: <input type="text" v-model="searchFilter" list="recipe-titles">
+      <datalist id="recipe-titles">
+        <option v-for="recipe in recipes">{{ recipe.title }}</option>
+      </datalist>
     </div>
     <div class="row row-cols-1 row-cols-md-4">
       <div v-for="recipe in filterBy(recipes, searchFilter, 'title', 'ingredients')" class="col mb-4">
