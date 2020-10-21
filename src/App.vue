@@ -31,6 +31,7 @@
       </div>
     </nav>
     <div class="container">
+      <div class="alert alert-success" v-if="flashMessage">{{ flashMessage }}</div>
       <router-view/>
     </div>
   </div>
@@ -45,6 +46,11 @@ body {
 
 <script>
 export default {
+  data: function () {
+    return {
+      flashMessage: "",
+    };
+  },
   methods: {
     isLoggedIn: function () {
       return localStorage.getItem("jwt");
